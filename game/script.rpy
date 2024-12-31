@@ -32,7 +32,7 @@ init:
 label start:
     window hide
     scene black
-    show scene1 behind rain at truecenter
+    show scenefixed behind rain at truecenter
     show rain at truecenter
     play music "rain.wav"
     pause 6.0
@@ -58,7 +58,7 @@ label start:
     play audio "knock.wav"
     $ renpy.music.set_volume(.75, 0.0, channel = "music")
     CT "There was a knock at the door."
-    $ renpy.music.set_volume(.70, 0.0, channel = "music")
+    $ renpy.music.set_volume(.65, 0.0, channel = "music")
     q "Hello?"
     q "I'm the new tenant of room 103."
     q "The lady at the front told me somebody already arrived last night."
@@ -79,7 +79,7 @@ label start:
     $ McName = McName.strip()
 
     mc "I'm [McName]."
-    CT "You tell her, before shaking her hand with a firm grip."
+    CT "You are [McName], you tell her, before shaking her hand with a firm grip."
     E "Pleased to make your acquaintance, [McName]."  
     CT "Ericia faintly smiles at you, but you can sense the tensed lines under her brows."
     E "We will have to depend on each other for these next few days."
