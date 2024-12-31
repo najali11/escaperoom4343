@@ -32,6 +32,7 @@ init:
 label start:
     window hide
     scene black
+
     show scenefixed behind rain at truecenter
     show rain at truecenter
     play music "rain.wav"
@@ -70,7 +71,7 @@ label start:
     scene black
     pause 2.0
     CT "A young woman, looking the same age as you appeared before your eyes."
-    CT "She extends her hand."
+    CT "She extends her hand." 
 
     E "I'm Ericia."
     E "And you are...?"
