@@ -6,7 +6,7 @@ define mc = Character("[McName]")
 transform fadeout_slowly(timeInSeconds=1.0):
     linear timeInSeconds alpha 0
 
-define dissolve = Dissolve(0.2)
+define dissolve = Dissolve(2.0)
 
 init:
     image rain:
@@ -39,8 +39,8 @@ label start:
     scene black
     pause 3.0
 
-    show scenefixed behind rain at truecenter with fade
-    show rain at truecenter 
+    show scenefixed behind rain at truecenter with dissolve
+    show rain at truecenter with dissolve 
     
     play music "rain.wav"
     pause 6.0
@@ -116,7 +116,7 @@ label start:
     $ renpy.music.set_volume(.05, 0.0, channel = "music")
     play music "dark.mp3"
     $ renpy.music.set_volume(.55, 0.0, channel = "music")
-    show hint at truecenter with fade
+    show hint at truecenter with dissolve
     pause 8.0
     "Within seven days, find the nonhuman within the group of players..."
     $ renpy.music.set_volume(.75, 0.0, channel = "music")
@@ -125,7 +125,7 @@ label start:
 
     menu:
         "Flip paper":
-            show hintflip at truecenter with fade
+            show hintflip at truecenter 
             $ renpy.music.set_volume(.75, 0.0, channel = "music")
             pause 8.0
     
