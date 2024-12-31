@@ -204,6 +204,16 @@ style input:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+screen choice:
+    window:
+        style "menu_window"
+        if gala:
+            xalign 0.9 ##<< special menu
+            yalign 0.5 ##<< special menu
+        else:
+            xalign 0.5 ##<< simple menu
+            yalign 0.5 ##<< simple menu
+
 screen choice(items):
     style_prefix "choice"
 
