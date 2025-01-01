@@ -6,7 +6,7 @@ define mc = Character("[McName]")
 transform fadeout_slowly(timeInSeconds=1.0):
     linear timeInSeconds alpha 0
 
-define dissolve = Dissolve(2.0)
+define dissolve = Dissolve(1.0)
 
 init:
     image rain:
@@ -39,8 +39,8 @@ label start:
     scene black
     pause 3.0
 
-    show scenefixed behind rain at truecenter with dissolve
-    show rain at truecenter with dissolve 
+    show scene2 behind rain at truecenter with dissolve
+    show rain at truecenter 
     
     play music "rain.wav"
     pause 6.0
@@ -53,16 +53,16 @@ label start:
     scene black
     pause 2.0
     show clock at truecenter with dissolve
-    play audio "clock.mp3"
     pause 5.0
     scene black with fade
-    
-
+    play audio "clock.mp3"
+    show clock1 at truecenter with fade
+    pause 2.0
     stop audio
-
+    scene black with dissolve
     play audio "knock.wav"
     $ renpy.music.set_volume(.75, 0.0, channel = "music")
-    CT "There was a knock at the door."
+    "There was a knock at the door."
     $ renpy.music.set_volume(.65, 0.0, channel = "music")
     q "Hello? {w=0.4}{nw}"
     q "I'm the new tenant of room 103. {w=0.7}{nw}"
@@ -78,9 +78,11 @@ label start:
     pause 2.0
     CT "A young woman, looking around the same age as you, appeared before your eyes."
     CT "She extends her hand." 
-    CT "You take notice of the fact that her nails are painted bright red."
+    show handnail at truecenter with fade 
+    "You take notice of the fact that her nails are painted bright red."
+    hide handnail with fade
     CT "A sudden strange smell wafts into your nose for a moment."
-    CT "You wrinkle your nose and took a more quiet sniffs."
+    CT "You wrinkle your nose and took a more quiet sniff."
     CT "Perhaps it was a figment of your imagination."
 
     E "I'm Ericia."
@@ -91,20 +93,20 @@ label start:
 
     CT "You are [McName], you tell her, before giving her a firm handshake."
     E "Pleased to make your acquaintance, [McName]."  
-    CT "Ericia faintly smiles at you, but you can see the tensed lines beneath her brows."
-    E "We will have to depend on each other these next couple of days."
-    CT "She pokes her head around the hall suspicously."
-    E "Have you checked out the other tenants yet?"
+    CT "Ericia's smile is faint, almost imperceptible, but her eyes remain sharp, scrutinizing you."
+    E "We'll need to rely on each other in the coming days. Trust is... essential."
+    CT "She whips her head around the hall suspicously, before lowering her voice to a tiny decibel."
+    E "Have you met the other tenants yet?"
     "You shake your head."
     mc "I thought I should wait until someone else arrived to do that."
-    CT "Ericia laughs."
-    E "You are right. Better safe than sorry, right?"
+    CT "Ericia nods slowly, her expression unreadable."
+    E "You are right. Caution can be a virtue here."
     "She checks her watch and frowns."
     E "11:39... It's getting late." 
-    E "Let's reconvene in the morning and discuss the instance then."
+    E "Let's reconvene in the morning. We have much to discuss."
     "You nod in agreement."
     mc "Goodnight."
-    E "Night!"
+    E "Rest well."
 
     play audio "door.mp3"
     $ renpy.music.set_volume(.25, 0.0, channel = "music")
@@ -120,7 +122,7 @@ label start:
     pause 8.0
     "Within seven days, find the nonhuman within the group of players..."
     $ renpy.music.set_volume(.75, 0.0, channel = "music")
-    "And kill them...?!"
+    "And kill them..."
     pause 2.0
 
     menu:
@@ -129,29 +131,14 @@ label start:
             $ renpy.music.set_volume(.75, 0.0, channel = "music")
             pause 8.0
     
-    "There is a daily stash of newspaper in the hotel lobby by the front desk."
-    "You took one with you last night during check in...."
     scene black with dissolve
-    "...And left it by the bedside table."
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
+    jump recall
 
     return
+
+
+label recall:
+    scene black with fade
+    CT ""
 
 
