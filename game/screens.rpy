@@ -113,7 +113,7 @@ screen say(who, what):
     ## If there's a side image, display it above the text. Do not display on the
     ## phone variant - there's no room.
     if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
+        add SideImage() xalign 0.273 yalign 0.95
 
 
 ## Make the namebox available for styling through the Character object.
@@ -209,7 +209,7 @@ screen choice:
         style "menu_window"
         if gala:
             xalign 0.9 ##<< special menu
-            yalign 0.5 ##<< special menu
+            yalign 0.7 ##<< special menu
         else:
             xalign 0.5 ##<< simple menu
             yalign 0.5 ##<< simple menu
@@ -227,8 +227,8 @@ style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
-    xalign 0.5
-    ypos 405
+    xalign 0.7
+    ypos 860
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -1532,12 +1532,13 @@ screen quick_menu():
             style_prefix "quick"
 
             xalign 0.5
-            yalign 1.0
+            yalign 0.0
 
             textbutton _("Back") action Rollback()
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Menu") action ShowMenu()
+            
 
 
 style window:

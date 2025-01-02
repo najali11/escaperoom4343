@@ -1,7 +1,7 @@
-﻿define CT = Character(None, window_xalign=0.5, window_yalign=0.5, window_background = None, what_color="#ffffff")
+﻿define CT = Character(None, window_xalign=1.0, window_yalign=1.0, window_background = None, what_color="#ffffff")
 define q = Character("???", color = "#f0f8ff")
-define E = Character("Ericia", color = "#f0f8ff")
-define mc = Character("[McName]")
+define E = Character("<Ericia>", color = "#f0f8ff")
+define mc = Character("<[McName]>", image= "mc")
 
 transform fadeout_slowly(timeInSeconds=1.0):
     linear timeInSeconds alpha 0
@@ -69,21 +69,21 @@ label start:
     q "The lady at the front told me somebody already arrived last night. {w=0.9}{nw}"
     window auto
     $ renpy.music.set_volume(.55, 0.0, channel = "music")
-    CT "You make your way over from the windowsill and opened the door."
+    "You make your way over from the windowsill and opened the door."
     $ renpy.music.set_volume(.35, 0.0, channel = "music")
 
     #door opening sound, but can be for door closing too?
     play audio "door.mp3"
     scene black
     pause 2.0
-    CT "A young woman, looking around the same age as you, appeared before your eyes."
-    CT "She extends her hand." 
+    "A young woman, looking around the same age as you, appeared before your eyes."
+    "She extends her hand." 
     show handnail at truecenter with fade 
     "You take notice of the fact that her nails are painted bright red."
     hide handnail with fade
-    CT "A sudden strange smell wafts into your nose for a moment."
-    CT "You wrinkle your nose and took a more quiet sniff."
-    CT "Perhaps it was a figment of your imagination."
+    "A sudden strange smell wafts into your nose for a moment."
+    "You wrinkle your nose and took a more quiet sniff."
+    "Perhaps it was a figment of your imagination."
 
     E "I'm Ericia."
     E "You are...?"
@@ -91,15 +91,15 @@ label start:
     $ McName = renpy.input(" ", default = " ", length = 12)
     $ McName = McName.strip()
 
-    CT "You are [McName], you tell her, before giving her a firm handshake."
+    "You are [McName], you tell her, before giving her a firm handshake."
     E "Pleased to make your acquaintance, [McName]."  
-    CT "Ericia's smile is faint, almost imperceptible, but her eyes remain sharp, scrutinizing you."
+    "Ericia's smile is faint, almost imperceptible, but her eyes remain sharp, scrutinizing you."
     E "We'll need to rely on each other in the coming days. Trust is... essential."
-    CT "She whips her head around the hall suspicously, before lowering her voice to a tiny decibel."
+    "She whips her head around the hall suspiciously, before lowering her voice to a tiny decibel."
     E "Have you met the other tenants yet?"
     "You shake your head."
-    mc "I thought I should wait until someone else arrived to do that."
-    CT "Ericia nods slowly, her expression unreadable."
+    mc default "I thought I should wait until someone else arrived to do that."
+    "Ericia nods slowly, her expression unreadable."
     E "You are right. Caution can be a virtue here."
     "She checks her watch and frowns."
     E "11:39... It's getting late." 
@@ -111,7 +111,7 @@ label start:
     play audio "door.mp3"
     $ renpy.music.set_volume(.25, 0.0, channel = "music")
     pause 3.0
-    CT "You stared coldly at the door for a brief moment before retrieving a slip of paper from your pocket."
+    "You stared coldly at the door for a brief moment before retrieving a slip of paper from your pocket."
     scene black 
     $ renpy.music.set_volume(.15, 0.0, channel = "music")
     pause 2.0
@@ -120,9 +120,10 @@ label start:
     $ renpy.music.set_volume(.55, 0.0, channel = "music")
     show hint at truecenter with dissolve
     pause 8.0
-    "Within seven days, find the nonhuman within the group of players..."
+    window hide
+    CT "Within seven days, find the nonhuman within the group of players..."
     $ renpy.music.set_volume(.75, 0.0, channel = "music")
-    "And kill them..."
+    CT "And kill them..."
     pause 2.0
 
     menu:
@@ -139,6 +140,25 @@ label start:
 
 label recall:
     scene black with fade
-    CT ""
+    CT "You appeared at the motel entrance last night at 11:30."
+    CT "When you arrived, you were greeted by a lady in blue at the front desk who handed you the keys to your room."
+    CT "The lobby was dimly lit by the emanating warm glows from a lightbulb by the lobby desk."
+    CT "In fact, you noticed a strange smell of chlorine water the moment you stepped into the place."
+    CT "But at that time, you make no inquiries about it."
+    CT "Your key was to room 101, in the floor directly above the lobby."
+    CT "The room immediately adjacent to the stairs where you came up from was room 114."
+    CT "Walking to your room, the floors constantly creaked and howled."
+    CT "This motel seems to be poorly maintained."
+    CT "You noticed light emanating from the door gaps of room 107 and 109."
+    CT "These rooms are occupied, you mentally noted."
+    CT "As for the other rooms, you weren't too sure. You did not hear any noise from them. But that may just speak to the soundproofness of these rooms."
+    CT "101. You reached your room."
+    play audio "door.mp3"
+
+    scene black with dissolve
+    
+
+
+
 
 
