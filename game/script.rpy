@@ -1,6 +1,6 @@
 ﻿define CT = Character(None, window_xalign=1.0, window_yalign=1.0, window_background = None, what_color="#ffffff")
 define q = Character("???", color = "#f0f8ff")
-define E = Character("<Ericia>", color = "#f0f8ff")
+define E = Character("<Ericia>", image= "ericia")
 define mc = Character("<[McName]>", image= "mc")
 
 transform fadeout_slowly(timeInSeconds=1.0):
@@ -85,24 +85,24 @@ label start:
     "You wrinkle your nose and took a more quiet sniff."
     "Perhaps it was a figment of your imagination."
 
-    E "I'm Ericia."
+    E default "I'm Ericia."
     E "You are...?"
 
     $ McName = renpy.input(" ", default = " ", length = 12)
     $ McName = McName.strip()
 
     "You are [McName], you tell her, before giving her a firm handshake."
-    E "Pleased to make your acquaintance, [McName]."  
+    E default "Pleased to make your acquaintance, [McName]."  
     "Ericia's smile is faint, almost imperceptible, but her eyes remain sharp, scrutinizing you."
-    E "We'll need to rely on each other in the coming days. Trust is... essential."
+    E default "We'll need to rely on each other in the coming days. Trust is... essential."
     "She whips her head around the hall suspiciously, before lowering her voice to a tiny decibel."
-    E "Have you met the other tenants yet?"
+    E default "Have you met the other tenants yet?"
     "You shake your head."
     mc default "I thought I should wait until someone else arrived to do that."
     "Ericia nods slowly, her expression unreadable."
-    E "You are right. Caution can be a virtue here."
+    E default "You are right. Caution can be a virtue here."
     "She checks her watch and frowns."
-    E "11:39... It's getting late." 
+    E default "11:39... It's getting late." 
     E "Let's reconvene in the morning. We have much to discuss."
     "You nod in agreement."
     mc "Goodnight."
@@ -144,7 +144,7 @@ label recall:
     CT "When you arrived, you were greeted by a lady in blue at the front desk who handed you the keys to your room."
     CT "The lobby was dimly lit by the emanating warm glows from a lightbulb by the lobby desk."
     CT "In fact, you noticed a strange smell of chlorine water the moment you stepped into the place."
-    CT "But at that time, you make no inquiries about it."
+    CT "But at that time, you made no inquiries about it."
     CT "Your key was to room 101, in the floor directly above the lobby."
     CT "The room immediately adjacent to the stairs where you came up from was room 114."
     CT "Walking to your room, the floors constantly creaked and howled."
@@ -153,6 +153,15 @@ label recall:
     CT "These rooms are occupied, you mentally noted."
     CT "As for the other rooms, you weren't too sure. You did not hear any noise from them. But that may just speak to the soundproofness of these rooms."
     CT "101. You reached your room."
+    show room1 at top with dissolve
+    mc default "..."
+    "It was a comfortable looking room."
+    "You had taken a glance at the clock on the wall."
+    "11:47."
+    "From your pocket, you unravelled a slip of paper."
+
+    
+
     play audio "door.mp3"
 
     scene black with dissolve
