@@ -1,6 +1,6 @@
 define CT = Character(None, window_xalign=1.0, window_yalign=1.0, window_background = None, what_color="#ffffff")
 define q = Character("???", color = "#f0f8ff")
-define e = Character("<[ERICIA]>", color="#f74747", image= "ericia")
+define e = Character("<[ATHENA]>", color="#f74747", image= "athena")
 define mc = Character("<[McName]>", color="#ffffff", image= "mc")
 define n = Character("<[NULL]>", color="#4380f3", image= "null")
 define i = Character("<[ITHACA]>", color="#f4f009", image= "ithaca")
@@ -61,7 +61,7 @@ label start:
     "The atmosphere in the lobby was grim, suffice to say."
     "The redhaired scowled and flipped her hair back with a roll of her eyes."
 
-    $ ERICIA = "?????"
+    $ ATHENA = "?????"
     e default "...as if that will work."
     "The boy next to you sank deeper into his seat with a quiet sigh."
 
@@ -173,7 +173,7 @@ label continue_main_story:
     tv "The rules are simple. The imposter must hide until the end of the two weeks period to win the game. The humans must collaborate amongst themselves and vote out the imposter!"
     tv "3/4 votes are needed to eliminate the imposter!"
     tv "Ah, what was that? What will happen if either side fails? Well..."
-    tv "That's not something you'll want to be on the opposite end of!"
+    tv "That's not something you'll want to be on the receiving end of!"
     tv "To make this game an exiting one, everyone will have a special skill to help them gain an edge."
     tv "Contestants! Your doors will unlock very soon! Please meet up in the lobby room as soon as possible to meet your fellow contestants!"
     tv "Game starts now!"
@@ -208,13 +208,13 @@ i default "And at last we have a full house. Welcome welcome."
 i default "Now that we have all gathered, let's jump straight into business. Let's introduce ourselves. I'll begin."
 i default "I'm Ithaca."
 $ ITHACA = "ITHACA"
-i default "Yes it's a codename. Would you all believe me if I say I'm a hired assassin? See, I wouldn't want to be implicated when we leave this instance and return to our real world."
-e default "When we return to our real world...What a bold confident statement."
+i default "Yes it's a codename. Would you all believe me if I say I'm a hired assassin? See, I wouldn't want to be implicated when we leave this instance and return home."
+e default "When we return home...What a bold confident statement."
 i laugh "Seamless segway into our next player, alright."
-e default "... {w=1.5}\nI'm Ericia. Part-time student, full-time dancer. \nI study traditional dance and I've done a few shows for central television."
-$ ERICIA = "ERICIA"
-i laugh "Are you saying we have a big time celebrity on our hands? My my, I am a big fan."
-e default "..."
+$ ATHENA = "ATHENA"
+e default "... {w=1.5}\nI'm Athena. Part-time student, full-time dancer. \nI study traditional dance and I've done a few shows for central television."
+i laugh "Are you saying we have a big time celebrity on our hands? \nMy my, I am a big fan."
+e default "...\nSave the buttery talk."
 n default "I'm Null. Infrastructure engineer."
 $ NULL = "NULL"
 "It seems to be another codename."
@@ -228,10 +228,17 @@ $ McName = McName.strip()
 mc "I am [McName]. I work as an..."
 menu:
     "Underground idol":
-        mc "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthdays and special events."
+        mc "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthday parties and special events."
+        jump continue3
     "Model":
-        mc "I am a model for Edgar's Well."
-        e default "No way..."
+        mc "I'm a model for Edgar's Well. It's a...{w=1}luxury brand for accessories."
+        e default "...No way. I've never seen your magazine covers before."
+        "Shit."
+        mc "I just joined the company last week... My first shoot was yesterday morning actually..."
+        i laugh "A bit jumping the gun here, aren't we?"
+        jump continue3
+
+
 
 
 
