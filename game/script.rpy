@@ -149,11 +149,11 @@ label mirrorchoice:
 
 label phonechoice:
     $ phone = True
-    "Fortunately for you, you easily unlocked the phone through fingerprint detection."
-    "7:56... The time displayed on the phone should be correct. You mindlessly checked for any incoming messages. Ah... there's no signal in this place. But you could still see the messages send to this phone since last night.
+    "Fortunately for you, you easily unlocked the phone through fingerprint verification."
+    "October 14, 2034. 7:56... The time and time displayed on the phone should be accurate. You mindlessly checked for any incoming messages. Ah... there's no signal in this place. But you could still see the messages send to this phone since last night.
     The last message recorded was at 11:56 from..."
     "Manager?"
-    "Manager: Pick up your phone. Now."
+    "Manager: You have been gone for five days young lady. Pick up the phone. Now."
     "How threatening."
     "Just as you were about to scroll up to read the other messages, the television switched on."
     stop music
@@ -214,7 +214,7 @@ i laugh "Seamless segway into our next player, alright."
 $ ATHENA = "ATHENA"
 e default "... {w=1.5}\nI'm Athena. Part-time student, full-time dancer. \nI study traditional dance and I've done a few shows for central television."
 i laugh "Are you saying we have a big time celebrity on our hands? \nMy my, I am a big fan."
-e default "...\nSave the buttery talk."
+e default "...\nQuit the buttery talk."
 n default "I'm Null. Infrastructure engineer."
 $ NULL = "NULL"
 "It seems to be another codename."
@@ -225,18 +225,26 @@ n default "(He shook his head) My work doesn't really focus on that. I work on a
 i default "Well? Would you do us the honors?"
 $ McName = renpy.input(" ", default = " ", length = 12)
 $ McName = McName.strip()
-mc "I am [McName]. I work as an..."
+mc default "I am [McName]. I work as an..."
 menu:
     "Underground idol":
-        mc "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthday parties and special events."
+        mc default "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthday parties and special events."
         jump continue3
     "Model":
-        mc "I'm a model for Edgar's Well. It's a...{w=1}luxury brand for accessories."
+        mc default "I'm a model for Edgar's Well. It's a...{w=1}luxury brand for accessories."
         e default "...No way. I've never seen your magazine covers before."
-        "Shit."
-        mc "I just joined the company last week... My first shoot was yesterday morning actually..."
+        mc default "{i}Shit.{/i}"
+        mc default "I just joined the company last week... My first shoot was yesterday morning actually..."
         i laugh "A bit jumping the gun here, aren't we?"
         jump continue3
+label continue3:
+i default "Assuming everyone is who they say they are... can anyone confidently dispel any doubts about their identity? {w=1}\n"
+
+
+
+n "There is something that is verifiable. {w=1}\nThe hotel check-in records."
+
+
 
 
 
