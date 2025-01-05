@@ -167,7 +167,7 @@ label continue_main_story:
     pause 2.0
     hide audio
     tv "The start of a wonderful day coincides with the start of a brilliant adventure! Aren't we excited here?!"
-    tv "For the uninitiated, welcome to Motel! Or... is it Hotel!...? Whatever! This will be a two week long program where our four contestants navigate the complexity of human relationships, weave through webs of lies, forge friendships of steal and -- {i}oh am I going off script?{/i}"
+    tv "For the uninitiated, welcome to Motel! Or... is it Hotel!...? Whatever! This will be a two week long program where our four contestants navigate the complexity of human relationships, weave through webs of lies, forge friendships of steel and -- {i}oh am I going off script?{/i}"
     tv "Ahem! {w=1}Our contestants are now currently locked up in their respective rooms. The task for them is simple. Within two weeks, they must vote out the imposter among them!"
     tv "Who is this imposter? Is it human? Alien? A supernatural diety from an outer dimension?! Hahahaha! The imposter themselves should know who they are."
     tv "The rules are simple. The imposter must hide until the end of the two weeks period to win the game. The humans must collaborate amongst themselves and vote out the imposter!"
@@ -202,7 +202,36 @@ label continue2:
 label floor1:
 scene black 
 show lobby with dissolve
-"When you arrived, you realized the other contestants were already there."
+"The other contestants were already there when you arrived. \nOn their faces were various expressions and some unspeakable emotions."
+"They watched you warily as you sat down on the only available seat on the couch next to a white haired boy."
+i default "And at last we have a full house. Welcome welcome."
+i default "Now that we have all gathered, let's jump straight into business. Let's introduce ourselves. I'll begin."
+i default "I'm Ithaca."
+$ ITHACA = "ITHACA"
+i default "Yes it's a codename. Would you all believe me if I say I'm a hired assassin? See, I wouldn't want to be implicated when we leave this instance and return to our real world."
+e default "When we return to our real world...What a bold confident statement."
+i laugh "Seamless segway into our next player, alright."
+e default "... {w=1.5}\nI'm Ericia. Part-time student, full-time dancer. \nI study traditional dance and I've done a few shows for central television."
+$ ERICIA = "ERICIA"
+i laugh "Are you saying we have a big time celebrity on our hands? My my, I am a big fan."
+e default "..."
+n default "I'm Null. Infrastructure engineer."
+$ NULL = "NULL"
+"It seems to be another codename."
+i default "The type that designs and safeguards digital networks?"
+n default "(He shook his head) My work doesn't really focus on that. I work on artifical intelligence. \nHowever you're right. That's generally what we do."
+"An assassin, a dancer, and an AI infrastructure engineer. That deos sound like a well rounded team."
+"You glanced up and noticed everyone staring at you."
+i default "Well? Would you do us the honors?"
+$ McName = renpy.input(" ", default = " ", length = 12)
+$ McName = McName.strip()
+mc "I am [McName]. I work as an..."
+menu:
+    "Underground idol":
+        mc "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthdays and special events."
+    "Model":
+        mc "I am a model for Edgar's Well."
+        e default "No way..."
 
 
 
