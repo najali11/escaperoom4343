@@ -208,14 +208,14 @@ show lobby with dissolve
 "They watched you warily as you sat down on the only available seat on the couch next to a white haired boy."
 i default "And at last we have a full house. Welcome welcome."
 i default "Now that we have all gathered, let's jump straight into business. Let's introduce ourselves. I'll begin."
-i default "I'm Ithaca."
+i smile "I'm Ithaca."
 $ ITHACA = "ITHACA"
 i default "Yes it's a codename. Would you all believe me if I say I'm a hired assassin? See, I wouldn't want to be implicated when we leave this instance and return home."
 e default "When we return home...What a bold confident statement."
-i laugh "Seamless segway into our next player, alright."
+i smile "Seamless segway into our next player, alright."
 $ ATHENA = "ATHENA"
 e default "... {w=1.5}\nI'm Athena. Part-time student, full-time dancer. \nI study traditional dance and I have a few performanced documented on national television."
-i laugh "Are you saying we have a big time celebrity on our hands? \nMy my, I am a big fan."
+i cutesmile "Are you saying we have a big time celebrity on our hands? \nMy my, I am a big fan."
 e default "...\nQuit the buttery talk."
 n default "I'm Null. Infrastructure engineer."
 $ NULL = "NULL"
@@ -224,7 +224,7 @@ i default "The type that designs and safeguards digital networks?"
 n default "(He shook his head) My work doesn't really focus on that. I work on artifical intelligence. \nHowever you're right. That's generally what we do."
 "An assassin, a dancer, and an AI infrastructure engineer. That does sound like a well rounded team."
 "You finally glanced up and noticed you have quite a few pair of eyes on you."
-i default "Well? Will you do us the honors?"
+i smile "Well? Will you do us the honors?"
 $ McName = renpy.input(" ", default = " ", length = 12)
 $ McName = McName.strip()
 mc default "I am [McName]. I work as an..."
@@ -240,12 +240,17 @@ menu:
         i laugh "A bit jumping the gun here, aren't we?"
         jump continue3
 label continue3:
-i default "Assuming everyone is who they say they are... can anyone confidently dispel any doubts about their identity? {w=1}\n"
+i smile "Assuming everyone is who they say they are... can anyone confidently dispel any doubts about their identity? {w=1}\n"
 
 
 
 n "There is something that is verifiable. {w=1}\nThe hotel check-in records."
-
+i shocked "Can we access that without a password?"
+e default "Maybe they have it noted down somewhere?"
+i poker "That's definitely possible."
+n annoyed "In a game instance like this, there should be many routes for us to exploit. Even if there's no password, that's still ok. /nI can log in as an administrator and force run it."
+i poker "..."
+mc "..."
 
 
 
