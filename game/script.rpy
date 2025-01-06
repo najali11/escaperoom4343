@@ -88,7 +88,9 @@ label start:
     "But that's because you...{w=1}are precisely the imposter they are searching for."
 
     scene black with fade 
+    show logo at center with dissolve
     pause 2.0
+    scene black
     CT "An hour ago."
     play music "dark.mp3"
     $ renpy.music.set_volume(.55, 0.0, channel = "music")
@@ -110,7 +112,7 @@ label start:
         "As your eyes adjust, details of the room emerged. This is a reasonably sized suite you are in."
         "The walls were covered with floral prints and the floors were gleaming hardwood, as if the paint and varnish were just recently applied not too long ago. "
         "To the right, a half opened door exposed tiled floors and a bathtub with transparent curtains strewn across gleaming brass hinges."
-        "There is a table next to the bathroom and sitting on it-- a purse and a keycard."
+        "There is a purse and a keycard sitting on the table next to the bathroom."
         "Looking to your left, Something caught your eyes."
         "No wonder it was so dark. {w=1} The drapes...they weren't just pulled shut, they were hammered to the wall with nails. How strange.."
         "A bit further down was another door."
@@ -119,7 +121,7 @@ label start:
         "No. You turned your head slightly and came face to face with your reflection. There was a full body mirror attached to this wall."
         "An unfamiliar face greeted you. {w=1}Your suspicions were correct. This isn't your body. You have assumed someone else's identity."
         "You frowned. So it's not a simple escape room instance. This body...isn't as strong as your original one. In fact, it is very delicate and petite. {w=1}How distasteful."  
-        "You should find clues. You walked over to the table where the purse and keycard are located. You picked up the purse and inspected it carefully. {i}Edgar's Well{/i}. {w=0.5} A famous human designer brand?" 
+        "You should find clues. You walked over to the table where the purse and keycard are located. You picked up the purse and inspected it carefully. {i}Edgar Wells{/i}. {w=0.5} A famous human designer brand?" 
         "You rummaged the purse. Inside there is a little hand mirror, {w=1}a wallet, a handphone...and 'honeydew flavored chapstick'?"
         jump choiceloop
 
@@ -153,7 +155,7 @@ label phonechoice:
     "October 14, 2034. 7:56... The time and time displayed on the phone should be accurate. You mindlessly checked for any incoming messages. Ah... there's no signal in this place. But you could still see the messages send to this phone since last night.
     The last message recorded was at 11:56 from..."
     "Manager?"
-    "Manager: You have been gone for five days young lady. Pick up the phone. Now."
+    "Manager: You have been gone for five days. Pick up the phone. Now."
     "How threatening."
     "Just as you were about to scroll up to read the other messages, the television switched on."
     stop music
@@ -175,7 +177,7 @@ label continue_main_story:
     tv "Ah, what was that? What will happen if either side fails? Well..."
     tv "That's not something you'll want to be on the receiving end of!"
     tv "To make this game an exiting one, everyone will have a special skill to help them gain an edge."
-    tv "Contestants! Your doors will unlock very soon! Please meet up in the lobby room as soon as possible to meet your fellow contestants!"
+    tv "Players! Your doors will unlock very soon! Please meet up in the lobby room as soon as possible to meet your fellow contestants!"
     tv "Game starts now!"
     hide static with dissolve
     pause 0.6
@@ -184,7 +186,7 @@ label continue_main_story:
     "The door unlocked with a click."
     
 label continue2:
-    "You stepped out of the room and into a narrow and silent hallway. It was so quiet you swear you can hear a pindrop. {w=1}You see that an elevator at the end of the hallway and gradually made your way over."
+    "You stepped out of the room and into a narrow and silent hallway. It was so quiet you swear you can hear a pin drop. {w=1}You see an elevator at the end of the hallway and gradually made your way over."
     scene black with dissolve
     show elevator with fade
     "Lobby room... where could that be?"
@@ -212,7 +214,7 @@ i default "Yes it's a codename. Would you all believe me if I say I'm a hired as
 e default "When we return home...What a bold confident statement."
 i laugh "Seamless segway into our next player, alright."
 $ ATHENA = "ATHENA"
-e default "... {w=1.5}\nI'm Athena. Part-time student, full-time dancer. \nI study traditional dance and I've done a few shows for central television."
+e default "... {w=1.5}\nI'm Athena. Part-time student, full-time dancer. \nI study traditional dance and I have a few performanced documented on national television."
 i laugh "Are you saying we have a big time celebrity on our hands? \nMy my, I am a big fan."
 e default "...\nQuit the buttery talk."
 n default "I'm Null. Infrastructure engineer."
@@ -220,9 +222,9 @@ $ NULL = "NULL"
 "It seems to be another codename."
 i default "The type that designs and safeguards digital networks?"
 n default "(He shook his head) My work doesn't really focus on that. I work on artifical intelligence. \nHowever you're right. That's generally what we do."
-"An assassin, a dancer, and an AI infrastructure engineer. That deos sound like a well rounded team."
-"You glanced up and noticed everyone staring at you."
-i default "Well? Would you do us the honors?"
+"An assassin, a dancer, and an AI infrastructure engineer. That does sound like a well rounded team."
+"You finally glanced up and noticed you have quite a few pair of eyes on you."
+i default "Well? Will you do us the honors?"
 $ McName = renpy.input(" ", default = " ", length = 12)
 $ McName = McName.strip()
 mc default "I am [McName]. I work as an..."
@@ -231,10 +233,10 @@ menu:
         mc default "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthday parties and special events."
         jump continue3
     "Model":
-        mc default "I'm a model for Edgar's Well. It's a...{w=1}luxury brand for accessories."
-        e default "...No way. I've never seen your magazine covers before."
-        mc default "{i}Shit.{/i}"
-        mc default "I just joined the company last week... My first shoot was yesterday morning actually..."
+        mc default "I'm a model for Edgar Wells. It's a...{w=1}luxury brand for accessories."
+        e default "...Really..I have never seen you before. I'm a big fan of Edgar Wells too."
+        mc default "{i}...{/i}"
+        mc default "I just joined the company last week..."
         i laugh "A bit jumping the gun here, aren't we?"
         jump continue3
 label continue3:
