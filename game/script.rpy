@@ -6,6 +6,7 @@ define n = Character("<[NULL]>", color="#4380f3", image= "null")
 define i = Character("<[ITHACA]>", color="#f4f009", image= "ithaca")
 define tv = Character("<TV>", color="#000000")
 
+
 #choices
 default wallet = False
 default mirror = False
@@ -15,36 +16,7 @@ image lobby:
     "lobby.jpg"
     pos (0.5, 0.59)
 
-transform fadeout_slowly(timeInSeconds=1.0):
-    linear timeInSeconds alpha 0
-
 define dissolve = Dissolve(1.0)
-
-init:
-    image rain:
-  
-        "rain1.png"
-        0.2
-        "rain3.png"
-        0.2
-        "rain2.png"
-        0.2
-        repeat
-
-        
-        choice 0.1:   #weight of choice is 0.1
-            "lightning.png"
-            alpha  0.0
-            linear 0.3 alpha  1.0
-            linear 0.3 alpha  0.0
-            
-        choice 0.1:
-            "rev_lightning"
-            alpha  0.0
-            linear 0.3 alpha  1.0
-            linear 0.3 alpha  0.0
-            
-        repeat
 
 label start:
     window hide
@@ -221,7 +193,7 @@ n default "I'm Null. Infrastructure engineer."
 $ NULL = "NULL"
 "It seems to be another codename."
 i default "The type that designs and safeguards digital networks?"
-n default "(He shook his head) My work doesn't really focus on that. I work on artifical intelligence. \nHowever you're right. That's generally what we do."
+n default "(He shook his head) \nMy work doesn't really focus on that. I work on artifical intelligence. However you're right. That's generally what we do."
 "An assassin, a dancer, and an AI infrastructure engineer. That does sound like a well rounded team."
 "You finally glanced up and noticed you have quite a few pair of eyes on you."
 i smile "Well? Will you do us the honors?"
@@ -231,10 +203,18 @@ mc default "I am [McName]. I work as an..."
 menu:
     "Underground idol":
         mc default "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthday parties and special events."
+        $ show_athena=True
+        $ show_null=True
+        $ show_ithaca=True
         jump continue3
     "Model":
         mc default "I'm a model for Edgar Wells. It's a...{w=1}luxury brand for accessories."
         e default "...Really..I have never seen you before. I'm a big fan of Edgar Wells too."
+        pause 0.5
+        $ show_athena=True
+        $ show_null=True
+        $ show_ithaca=True
+        $ athena_sus+=5
         mc default "{i}...{/i}"
         mc default "I just joined the company last week..."
         i laugh "A bit jumping the gun here, aren't we?"
@@ -248,11 +228,59 @@ n "There is something that is verifiable. {w=1}\nThe hotel check-in records."
 i shocked "Can we access that without a password?"
 e default "Maybe they have it noted down somewhere?"
 i poker "That's definitely possible."
-n annoyed "In a game instance like this, there should be many routes for us to exploit. Even if there's no password, that's still ok. /nI can log in as an administrator and force run it."
+n annoyed "In a game instance like this, there should be many routes for us to exploit. Even if there's no password, that's still ok. I can log in as an administrator and force run it."
 i poker "..."
 mc "..."
+e default "Alright. System rebooting."
+"She scooted back and allowed Null to take reins. \nNull leaned forward with one hand on the mouse and the other shoved inside his pockets."
+"You realized he was taller than you thought. 183cm? It is because of his lanky frame that had you thinking he was around 175."
+n annoyed "...Administrator....{w=1}\nControl userpasswords2..."
+n default "Ah. {w=1}\nI'm in."
+mc default "...Amazing."
+"Is it really that simple...? \nIf he really pulls up the check in logs, then your lies about your identity will easily be exposed."
+menu:
+    "Speak: Is it a good idea?":
+        jump spokeout
+    "Say nothing.":
+        "You held your tongue. {i}It's a two weeks long instance. This... it hasn't even been an hour! Logically, if the records could be retreived so easily, then that's not worth the investment right? \nSpeaking of it, the television also mentioned everyone will be granted an unique ability..."
+        "You noticed Athena narrowed her eyes over Null's shoulders, deeply immersed in whatever he was doing. \nIthaca...{w=.5}Strangely, Ithaca on the otherhand didn't look as interested. {i} Why?{/i}"
+        jump continue4
 
+label spokeout:
+mc default "What if we are walking into a trap...？"
+"Null paused to look at you."
+n default "?\nWhat?"
+"He stared at you with a confused look."
+mc default "We can't confirm anyone's identity right now. And you are the only one who knows how to pull up the records. How do we know... these records are right?"
+n default "(He blinked slowly)\nAre you suspecting me of potential foul play?"
+mc default "I'm not saying you... I'm saying this is strange. What is we are walking straight into a trap? \nI'm just afraid we will be let around the nose."
+n default "..."
+$ null_sus+=25
+$ athena_sus+=15
+n default "Then what do you suggest instead?"
+mc default "The game master suggests the existence of special abilities. What if this imposter has the ability to digitally alter records? If so, this investigation is going to be colored by red herrings."
+n annoyed "..."
+n annoyed "What a strange line of thought."
+"He watched you coolly but you sensed the iciness within his gaze."
+$ null_sus+=30
+n annoyed "Sorry but...{w=1}I don't agree."
+i smile "She bring up a good point actually. \nRight now, we are the only ones who are entirely sure of our identities. How can we be sure if the digital records are not altered in some way or form?"
+"Passing by, you caught Ithaca's eyes. He gave you a meaningful look. You weren't certain but there was a certain flare of amusement in his smile."
+i smile "For example, how can we prove the veracity of these records? You want to stake our identities on these data logs."
+n default "Rather than worrying about hypothetical abilities, shouldn't we use the tools we have? Unless..."
+n annoyed "Someone has a reason to avoid verification."
+e default "..You two are really suspicious right now, you know?"
+i cutesmile "Really? I'm just highlighting something very important."
+n annoyed "If your records are inaccurate, say it."
+jump continue4
 
+label continue4:
+"There was a brief silence in the room when time also held its piece."
+n annoyed "..."
+n annoyed "There's nothing. It's been wiped clean."
+e default "...ugh."
+i poker "..."
+"...Whew."
 
 
 
