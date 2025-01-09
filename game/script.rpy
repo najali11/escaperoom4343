@@ -6,6 +6,9 @@ define n = Character("<[NULL]>", color="#4380f3", image= "null")
 define i = Character("<[ITHACA]>", color="#f4f009", image= "ithaca")
 define tv = Character("<TV>", color="#000000")
 
+#cursor
+define config.mouse = {}
+define config.mouse['default'] = [("gui/cursor.png", 0, 0)]
 
 #choices
 default wallet = False
