@@ -11,9 +11,10 @@ define tv = Character("<TV>", color="#000000")
 default wallet = False
 default mirror = False
 default phone = False
+default sus1 = False
 
 image lobby:
-    "lobby.jpg"
+    "lobby.webp"
     pos (0.5, 0.59)
 
 define dissolve = Dissolve(1.0)
@@ -179,7 +180,7 @@ show lobby with dissolve
 "The other contestants were already there when you arrived. \nOn their faces were various expressions and some unspeakable emotions."
 "They watched you warily as you sat down on the only available seat on the couch next to a white haired boy."
 i default "And at last we have a full house. Welcome welcome."
-i default "Now that we have all gathered, let's jump straight into business. Let's introduce ourselves. I'll begin."
+i default "Now that we have all gathered, let's jump straight into business. Name, occupation, and events leading up to last night. I'll begin."
 i smile "I'm Ithaca."
 $ ITHACA = "ITHACA"
 i default "Yes it's a codename. Would you all believe me if I say I'm a hired assassin? See, I wouldn't want to be implicated when we leave this instance and return home."
@@ -224,7 +225,7 @@ i smile "Assuming everyone is who they say they are... can anyone confidently di
 
 
 
-n "There is something that is verifiable. {w=1}\nThe hotel check-in records."
+n "I suppose there is something that is verifiable. {w=1}\nThe hotel check-in records."
 i shocked "Can we access that without a password?"
 e default "Maybe they have it noted down somewhere?"
 i poker "That's definitely possible."
@@ -272,6 +273,7 @@ n annoyed "Someone has a reason to avoid verification."
 e default "..You two are really suspicious right now, you know?"
 i cutesmile "Really? I'm just highlighting something very important."
 n annoyed "If your records are inaccurate, say it."
+$ sus1 = True
 jump continue4
 
 label continue4:
@@ -280,7 +282,52 @@ n annoyed "..."
 n annoyed "There's nothing. It's been wiped clean."
 e default "...ugh."
 i poker "..."
-"...Whew."
+"...Whew. \nThat was a close call."
+e default "Could the imposter have deleted them...?"
+n default "Possibly. But I suspect it may be part of the instance design."
+if sus1:
+    n annoyed "(He glanced at you meaningfully.) \nIf it was the imposter who deleted them, they wouldn't have been so worried about the datalog."
+    mc default "..."
+    menu:
+        "You are defaming an innocent person...":
+            mc default "...Don't give me that look."
+            n default ".."
+        "You are jumping to conclusions.":
+            mc default ".. Don't irrationally pin suspicion on someone right off the bat."
+            n default "(He looked away.)"
+            $ null_sus-=5
+else:
+    jump continue5
+
+label continue5:
+    e default "...Back to square one, huh."
+    i sdefault "Speaking of it, is this everyone's first instance?"
+    n default "Yes."
+    e default "....Second one actually."
+    "You have been to many instances in the past. But what should you tell them?"
+    menu:
+        "This is my first instance as well.":
+            mc default "This is my first instance as well."
+            if sus1:
+                $ null_sus+=5
+                $ athena_sus+=5
+            i default "So we have a veteran among us."
+        "Not my first.":
+            mc default "This is not my first instance either."
+            i default "So we have some veterans among us."
+    
+    i default "This is also my first instance. \nI've always wondered when it'll be my time, to be mysteriously whisked away into a space blot and forced to compete in a mass casualty event to survive." 
+    i crazed "This is much tamer than I thought."
+    
+
+
+
+
+    
+
+
+
+
 
 
 
