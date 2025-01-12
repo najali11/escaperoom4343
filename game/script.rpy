@@ -6,9 +6,43 @@ define n = Character("<[NULL]>", color="#4380f3", image= "null")
 define i = Character("<[ITHACA]>", color="#f4f009", image= "ithaca")
 define tv = Character("<TV>", color="#000000")
 
+
+image static:        
+    "static.webp"
+    0.9
+    Null ()
+    0.05
+    "static.webp"
+    0.01
+    Null ()
+    0.05  
+    "static.webp"
+    0.03
+    Null ()
+    0.05
+    "static.webp"
+
+image gnomes:
+    "clip/1.png"
+    0.1
+    "clip/2.png"
+    0.1
+    "clip/3.png"
+    0.1
+    "clip/4.png"
+    0.1
+    "clip/5.png"
+    0.1
+    "clip/6.png"
+    3.0
+
+
 #cursor
 define config.mouse = {}
 define config.mouse['default'] = [("gui/cursor.png", 0, 0)]
+
+#window dialogue always shown as default
+define config.window = "show"
 
 #choices
 default wallet = False
@@ -18,7 +52,7 @@ default sus1 = False
 
 image lobby:
     "lobby.webp"
-    pos (0.5, 0.59)
+    pos (0.5, 0.80)
 
 define dissolve = Dissolve(1.0)
 
@@ -33,34 +67,34 @@ label start:
     i default "Now that we have all introduced ourselves and clarified our alibis~ \n{w=1}Would our little impostor care to raise their hand?"
     i "Have pity on us and make this a fast one."
 
-    i crazed "Otherwise, when I find you, it won't be a happy ending."
+    i crazed "I'm not above torturing it out of you." with vpunch
     "The atmosphere in the lobby was grim, suffice to say."
-    "The redhaired scowled and flipped her hair back with a roll of her eyes."
+    "The redhaired stopped dead in her tracks and froze."
 
     $ ATHENA = "?????"
-    e default "...as if that will work."
+    e default "..."
     "The boy next to you sank deeper into his seat with a quiet sigh."
 
     $ NULL = "?????"
     n annoyed "..."
     "You, on the otherhand, peered silently at the boy lounging arrogantly on the sofa with a leg dangled over the armrest and a glint of schadenfreude in his smirk."
     "When no one responded, he let out a sharp laugh and dropped the knife."
-    i default "Oh don't give me that look! It was just a little ice-breaker to get things going."
+    i default "Oh don't give me that look! It was a joke, lighten up. It's actually a fruits knife. Here, have some apples."
     e "You seem to think this is some laughing matter. \nBut it's quite frankly a matter of life and death."
     "His smirk widened."
     i default "Oh you need not worry. I think I have {i}much{/i} more experience on this font than you."
     i "Actually..."
     i crazed "{i}I feel my blood singing with excitement.{/i}" with vpunch
     "The other girl gave him a look of disgust hearing that."
-    e "Whose to say the alien is not you. You seem quite departed from your humanity."
+    e "Whose to say the imposter is not you. You don't seem quite put together."
     i laugh "Haha! Maybe I am."
     e "Well officer, there you have it. Lock him up and call it a day."
     n default "We have two weeks. That's plenty of time."
     e default "...aren't you guys confident..."
-    "She folded her arms and glanced at you briefly before scowling away."
-    "You nimbly reached for the cup of red tea and brought it to your lips."
-    "The drink was hot and refreshing. But.. you had to refrain yourself from pulling a face. It was just... bitter."
-    "You never drank anything like this before."
+    "She folded her arms and glanced at you briefly before looking away."
+    "You nimbly reached for a slice of fruit and popped it in your mouth."
+    "The fruit was chilled and refreshing. But.. you had to refrain yourself from pulling a face. It was just... sweet."
+    "You never ate anything like this before."
     "But that's because you...{w=1}are precisely the imposter they are searching for."
 
     scene black with fade 
@@ -104,6 +138,7 @@ label start:
     label choiceloop:
 
     menu:
+        extend ""
         "Inspect the wallet" if not wallet:
             jump walletchoice
         "Inspect the hand mirror" if not mirror:
@@ -162,12 +197,15 @@ label continue_main_story:
     "The door unlocked with a click."
     
 label continue2:
+    show hallway at top with dissolve
+    pause 0.2
     "You stepped out of the room and into a narrow and silent hallway. It was so quiet you swear you can hear a pin drop. {w=1}You see an elevator at the end of the hallway and gradually made your way over."
     scene black with dissolve
-    show elevator with fade
+    show elevator at top with fade
     "Lobby room... where could that be?"
 
     menu:
+        extend ""
         "Floor 1":
             jump floor1
         "NOFloor 2":
@@ -205,6 +243,7 @@ $ McName = renpy.input(" ", default = " ", length = 12)
 $ McName = McName.strip()
 mc default "I am [McName]. I work as an..."
 menu:
+    extend ""
     "Underground idol":
         mc default "I'm an underground idol...{w=1}I do a few shows here and there... Sometimes I'm hired for birthday parties and special events."
         $ show_athena=True
@@ -238,11 +277,11 @@ mc "..."
 e default "Alright. System rebooting."
 "She scooted back and allowed Null to take reins. \nNull leaned forward with one hand on the mouse and the other shoved inside his pockets."
 "You realized he was taller than you thought. 183cm? It is because of his lanky frame that had you thinking he was around 175."
-n annoyed "...Administrator....{w=1}\nControl userpasswords2..."
 n default "Ah. {w=1}\nI'm in."
-mc default "...Amazing."
+mc default "...That was fast."
 "Is it really that simple...? \nIf he really pulls up the check in logs, then your lies about your identity will easily be exposed."
 menu:
+    extend ""
     "Speak: Is it a good idea?":
         jump spokeout
     "Say nothing.":
@@ -264,7 +303,7 @@ $ athena_sus+=15
 n default "Then what do you suggest instead?"
 mc default "The game master suggests the existence of special abilities. What if this imposter has the ability to digitally alter records? If so, this investigation is going to be colored by red herrings."
 n annoyed "..."
-n annoyed "What a strange line of thought."
+n annoyed "What a strange logic."
 "He watched you coolly but you sensed the iciness within his gaze."
 $ null_sus+=30
 n annoyed "Sorry but...{w=1}I don't agree."
@@ -292,6 +331,7 @@ if sus1:
     n annoyed "(He glanced at you meaningfully.) \nIf it was the imposter who deleted them, they wouldn't have been so worried about the datalog."
     mc default "..."
     menu:
+        extend ""
         "You are defaming an innocent person...":
             mc default "...Don't give me that look."
             n default ".."
@@ -304,23 +344,88 @@ else:
 
 label continue5:
     e default "...Back to square one, huh."
-    i sdefault "Speaking of it, is this everyone's first instance?"
+    i default "Speaking of it, is this everyone's first instance?"
     n default "Yes."
     e default "....Second one actually."
     "You have been to many instances in the past. But what should you tell them?"
     menu:
-        "This is my first instance as well.":
+        extend ""
+        "1. This is my first instance.":
             mc default "This is my first instance as well."
             if sus1:
                 $ null_sus+=5
                 $ athena_sus+=5
             i default "So we have a veteran among us."
-        "Not my first.":
+        "2. Not my first.":
             mc default "This is not my first instance either."
             i default "So we have some veterans among us."
     
     i default "This is also my first instance. \nI've always wondered when it'll be my time, to be mysteriously whisked away into a space blot and forced to compete in a mass casualty event to survive." 
     i crazed "This is much tamer than I thought."
+    e default "...Don't bank on it. In these instances, you don't know when the sudden switch will be."
+    i default "Why don't you tell us a bit about your last instance?"
+    e default "..."
+    e default "I don't really mind but...to be honest, I forgot most of it. It was a bit like coming out from a dream... I guess that's why I'm calmer than you'd expect. \nAfter all, I already experienced it once and..."
+    scene black with dissolve
+    pause 1.0
+    e default "It was a dark fairy tale."
+    show gnomes at top with dissolve
+    e default "In that instance, we were the gnomes tasked with preventing Snow White from falling into the wicked queen's hands."
+    show 7 at top with dissolve
+    i default "That's it? All I hear on the news everyday is how inexorbitant amount of people died after disappearing into an instance. Isn't there that recent one? \nIt was a complete wipe out."
+    e default "The news always pick the most sensational story to tell."
+    i default "Unfortunately."
+    e default "But no, that is not all. No matter how hard we tried, at the end, Snow White bit into the queen's apple. After that...you guys know the story right?"
+    show prince at top with dissolve 
+    n default "You guys need to find the prince."
+    e default "That's right. But...there was something wrong with that instance because the prince disappeared."
+    i shocked "Disappeared?"
+    e default "That's right."
+    i shocked "Then shouldn't you guys have failed that instance? There's no way to rescue the princess now right?"
+    e default "... The thing is... afterwards, the wicked queen also disappeared. The instance shut down on it's own. It's like the whole realm collapsed. We players all returned home without any casualties."
+    n annoyed "That is strange."
+    e default "That's why... a lot of my memories from that time are foggy. It's been two years..."
+    "Athena closes her eyes, as if trying to remember the events of that time. But after a while, she shook her head and sighed."
+    e default "I can't remember how any of the NPCs looked like..."
+    n annoyed "..."
+    n annoyed "Isn't it strange?"
+    e default "Huh?"
+    n annoyed "In instances, there are usually specific tasks and missions with clear routes. Although there are many ways to solve an instance, there are usually clearly set rules which give the players a clue on how to proceed."
+    n annoyed "But so far, our task has been ambiguous. First of all, what is an 'imposter' and what kind of creature are they?"
+    e default "Isn't it someone who deceives others using a fake identity?"
+    n default "But nothing is defined so far. It's true that we don't know the extent of their abilities."
+    if sus1:
+        "You felt the weight of Null's eyes on you."
+
+    n annoyed "And something has been bothering me so far."
+    n annoyed "The record logs are wiped out, which means the game won't leave behind any physical traces of the imposter's identity. It might be actively helping the imposter win by deleting all these traces. Furthermore, there are no NPCs. The only sources we have are each other."
+    i laugh "Hahahaha! Insidious isn't it? The game is designed for us to trust each other and rely on each other's words to defeat it. Yet one of us here is a liar..."
+    i default "Now that we have all introduced ourselves and clarified our alibis~ \n{w=1}Would our little impostor care to raise their hand?"
+    i frontsmirk "Have pity on us and make this a fast one."
+    i frontsmirk "Otherwise..."
+    i crazed "I'm not above torturing it out of you." with vpunch
+    "Ithaca suddenly whips out a pocket knife. The edge of it gleamed in the light, revealing its razor sharp edges. He points it at you guys with a maniacal little grin."
+    e default "..."
+    n annoyed "..."
+    mc default "..."
+    i laugh "Hahahah! It was a joke! Lighten up guys! This is a fruit knife I got from the kitchen. There are some sliced apples, want some?"
+    "Ithaca stood up and walked towards the back where he appeared a few seconds later with a plate of diced fruits."
+    i smile "I'll see what else I can whip up for breakfast."
+    e default "...Do we have time to chill like this?"
+    n default "We have two weeks after all."
+    scene black with dissolve
+    
+
+
+
+
+
+
+
+
+
+
+
     
 
 
